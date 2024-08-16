@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>蔡佳彤的個人網站</title>
+    <style>
+        :root {
+            --main-color: #4a8cbb;
+            --panel-color-1: #f9f9f9;
+            --panel-color-2: #ececec;
+        }
+        body {
+            font-family: Calibri, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: var(--main-color);
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .tagline {
+            font-weight: lighter;
+            font-size: 1.2em;
+            color: #fff;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--main-color); /* 使用变量设置背景颜色 */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px; /* 设置圆角 */
+            text-decoration: none; /* 移除下划线 */
+            font-weight: bold; /* 文字加粗 */
+            transition: background-color 0.3s, color 0.3s; /* 过渡动画效果 */
+            margin-right: 15px; /* 右侧外边距 */
+        }
+
+        .button:hover {
+            background-color: #337ab7; /* 悬停时背景颜色变深 */
+        }
+
+        .contact-info a {
+            display: inline-block;
+            background-color: #1e4a72; 
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px; /* 圓角設定 */
+            text-decoration: none; /* 移除下劃線 */
+            font-weight: bold; /* 字體加粗 */
+            margin-right: 15px; /* 右側外邊距 */
+            transition: background-color 0.3s, color 0.3s; /* 過渡動畫效果 */
+        }
+
+        .contact-info a:hover {
+            background-color: white; /* 滑鼠懸停時的背景顏色變化 */
+            color: black;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            font-size: 1em;
+        }
+
+        nav a {
+            color: var(--main-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--main-color);
+            color: #ffffff;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: none;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--main-color);
+            padding-bottom: 5px;
+            font-weight: bold;
+            color: var(--main-color);
+        }
+
+        .accordion {
+            background-color: #f1f1f1;
+            color: #000;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: Calibri, sans-serif;
+        }
+
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+            margin-top: 5px;
+            border-left: 5px solid var(--main-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 16px; /* Consistent font-size */
+        }
+
+        .panel-1 {
+            background-color: var(--panel-color-1);
+        }
+
+        .panel-2 {
+            background-color: var(--panel-color-2);
+        }
+
+        .link-text {
+            color: #4a8cbb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link-text:hover {
+            text-decoration: underline;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--main-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 16px; 
+        }
+
+        #projects {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        #publications {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        #education {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .project-item, .publication-item, .edu-item, .publication-item {
+            position: relative;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item::before, .publication-item::before, .edu-item::before, .publication-item::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #3498db;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        #honors ul li {
+            margin-bottom: 10px;
+            font-size: 16px
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="profile-info">
+                <h1>蔡佳彤</h1>
+                <p class="tagline">數據分析師 | 精通 Python、SQL 和 Tableau</p>
+                <div class="contact-info">
+                    <a href="mailto:cai.jiatong2601@gmail.com" class="button">電子郵件</a>
+                    <a href="https://github.com/jiatongoo" target="_blank" class="button">GitHub</a>
+                    <a href="https://JiatongTsai.github.io/" target="_blank" class="button">個人連結</a>
+                </div>
+            </div>
+            <img src="D:\Personal-Website-main\image\profile.png" alt="蔡佳彤" class="profile-img">
+        </div>
+    </header>    
+    <nav>
+        <a href="#about">關於我</a>
+        <a href="#experience">經歷</a>
+        <a href="#education">學歷</a>
+        <a href="#certifications">證照</a>
+        <a href="#projects">專案</a>
+        <a href="#skills">技能</a>
+        <a href="#publications">發表</a>
+        <a href="#honors">榮譽</a>
+        <a href="https://JiatongTsai.github.io/" id="lang-toggle">English</a>
+    </nav>
+    <section id="about">
+        <h2>關於我</h2>
+        <p>我是一名剛從國立臺北大學資訊管理研究所畢業的學生。我擁有Python數據處理和可視化方面的專業知識,並專注於運用SQL和Tableau來增強數據驅動的決策過程。在學期間,我擔任研究助理,參與了多個自然語言處理領域的研究項目,這些經歷讓我對大數據分析和機器學習有了深入的理解。我熱衷於將所學知識應用到實際的數據分析工作中,為企業提供有價值的想法。</p>
+    </section>
+    <section id="experience">
+        <h2>經歷</h2>
+        <p><strong>國立台北大學 - 研究助理： (2022-2024)</strong></p>
+        <p>支持多個自然語言處理領域研究專案的數據收集和初步分析。</p>
+    </section>
+    <section id="education">
+        <h2>學歷</h2>
+        <div class="edu-item">
+            <p><strong>世新大學：資訊管理學士 (2018-2022)</strong></p>
+            <p>課程： [在此列出你的課程]</p>
+        </div>
+        <div class="edu-item">
+            <p><strong>國立台北大學：資訊管理碩士 (2022-2024)</strong></p>
+            <p>課程： [在此列出你的課程]</p>
+            <p><strong>實驗室：</strong>智慧金融創新科技實驗室 (iFit Lab MIS)</p>
+            <p><strong>碩士論文：</strong>應用人工智慧文本分析於碳市場情緒指標</p>
+        </div>
+    </section>         
+    <section id="certifications">
+        <h2>證照</h2>
+        <p><strong>Amazon Web Services Cloud Practitioner</strong></p>
+        <p>發證日期：2023年9月</p>
+        <p><strong>BI規劃師</strong></p>
+        <p>發證日期：2022年1月</p>
+    </section>    
+    <section id="projects">
+        <h2>專案</h2>
+        <div class="project-item">
+            <p><strong>元宇宙虛擬化身元數據自動生成模組</strong></p>
+            <p>明合智聯股份有限公司</p>
+            <p>2022/12/01~2023/11/30</p>
+        </div>
+        <div class="project-item">
+            <p><strong>金融科技綠色金融於碳市場指標與公司環境策略</strong></p>
+            <p>國立臺北大學 金融科技暨綠色金融研究中心 (FGFC, NTPU)</p>
+            <p>2023/01/01~2024/12/31</p>
+        </div>
+        <div class="project-item">
+            <p><strong>泛用數據處理相關程式碼生成引擎先導研究</strong></p>
+            <p>資訊工業策進會 (III)</p>
+            <p>2023/08/01~2023/12/22</p>
+        </div>
+        <div class="project-item">
+            <p><strong>生成式AI驅動的ESG報告生成技術</strong></p>
+            <p>工業技術研究院 (ITRI)</p>
+            <p>2024/03/01~2024/12/31</p>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <h2>技能</h2>
+        <div class="skills-list">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">機器學習</span>
+            <span class="skill-item">資料視覺化</span>
+            <span class="skill-item">ETL (Extract, Transform, Load)</span>
+            <span class="skill-item">Tableau</span>
+            <span class="skill-item">Power BI</span>
+        </div>
+    </section>    
+    <section id="publications">
+        <h2>發表</h2>
+        <div class="publication-item">
+            <p><strong>使用 Transformer 語言模型和數據增強策略提升多語言 ESG 影響持續時間分類</strong></p>
+            <p><strong>作者：</strong>高郁涵、Vidhya Nataraj、柳筱荃、廖文瑄、<strong><u>蔡佳彤</u></strong>、戴敏育 (2024)</p>
+            <p><strong>會議：</strong>ICIM 2024 國際資訊管理學術研討會</p>
+            <p><strong>日期與地點：</strong>2024/06/23，台灣台北</p>
+        </div>
+        <div class="publication-item">
+            <p><strong>IMNTPU 於 ML-ESG-3：多語言 ESG 影響類型和持續時間分類的 Transformer 語言模型</strong></p>
+            <p><strong>作者：</strong>高郁涵、Vidhya Nataraj、王亭淇、鄭羽君、柳筱荃、廖文瑄、<strong><u>蔡佳彤</u></strong>、戴敏育 (2024)</p>
+            <p><strong>會議:</strong> Joint Workshop of the 7th Financial Technology and Natural Language Processing (FinNLP), the 5th Knowledge Discovery from Unstructured Data in Financial Services (KDF), and The 4th Workshop on Economics and Natural Language Processing (ECONLP), in Proceedings of The 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024)</p>
+            <p><strong>日期與地點：</strong>2024/05/20-25，義大利杜林</p>
+            <p><strong><a class="link-text" href="https://aclanthology.org/2024.finnlp-1.23/">查看全文</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>IMNTPU 於 NTCIR-17 FinArg-1：社交媒體中基於財務論點的情感分析與論點關係識別</strong></p>
+            <p><strong>作者：</strong><strong><u>蔡佳彤</u></strong>、廖文瑄、柳筱荃、Vidhya Nataraj、劉子瑜、姜天戩、戴敏育 (2023)</p>
+            <p><strong>會議：</strong><a class="link-text" href="https://research.nii.ac.jp/ntcir/ntcir-17/">第17屆資訊存取技術評估國際會議 (NTCIR-17)</a></p>
+            <p><strong>日期與地點：</strong>2023/12/12-15，日本東京</p>
+            <p><strong><a class="link-text" href="https://cir.nii.ac.jp/crid/1390017345599669632">查看全文</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>IMNTPU 於 NTCIR-17 Real-MedNLP 任務：基於社交媒體的不良藥物事件檢測的多模型方法</strong></p>
+            <p><strong>作者：</strong>柳筱荃、Vidhya Nataraj、<strong><u>蔡佳彤</u></strong>、廖文瑄、劉子瑜、姜天戩、戴敏育 (2023)</p>
+            <p><strong>會議：</strong><a class="link-text" href="https://research.nii.ac.jp/ntcir/ntcir-17/">第17屆資訊存取技術評估國際會議 (NTCIR-17)</a></p>
+            <p><strong>日期與地點：</strong>2023/12/12-15，日本東京</p>
+            <p><strong><a class="link-text" href="https://cir.nii.ac.jp/crid/1390861770529802624">查看全文</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>大型語言模型驅動的人工智慧輔助代碼生成技術於軟體工程之初步研究</strong></p>
+            <p><strong>作者：</strong>柳筱荃、<strong><u>蔡佳彤</u></strong>、戴敏育 (2023)</p>
+            <p><strong>會議：</strong>第28屆人工智慧與應用研討會(TAAI 2023)</p>
+            <p><strong>日期與地點：</strong>2023/12/01-02，台灣雲林</p>
+            <p><strong><a class="link-text" href="https://link.springer.com/chapter/10.1007/978-981-97-1711-8_12">查看全文</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>CMSI：應用人工智慧文本分析於碳市場情緒指標</strong></p>
+            <p><strong>作者：</strong>戴敏育 和 <strong><u>蔡佳彤</u></strong></p>
+            <p><strong>會議：</strong><a class="link-text" href="https://asonam.cpsc.ucalgary.ca/2023/">The 14th International Workshop on Mining and Analyzing Social Networks for Decision Support (MSNDS 2023), in Proceedings of the 2023 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM 2023)</a></p>
+            <p><strong>日期與地點：</strong>2023/11/06-09，土耳其庫薩達斯</p>
+            <p><strong><a class="link-text" href="https://dl.acm.org/doi/abs/10.1145/3625007.3627516">查看全文</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>大型語言模型在財務報告與財報會議記錄中的論點情感分析方法</strong></p>
+            <p><strong>作者：</strong><strong><u>蔡佳彤</u></strong> 和 戴敏育 (2023)</p>
+            <p><strong>會議：</strong><a class="link-text" href="https://tanet2023.nccu.edu.tw/">NCS 2023</a></p>
+            <p><strong>日期與地點：</strong>2023/11/01-03，台灣台北</p>
+            <p><strong><a class="link-text" href="https://irtest.lib.nccu.edu.tw/handle/140.119/148752">查看全文</a></strong></p>
+        </div>
+    </section>
+    <section id="honors">
+        <h2>榮譽</h2>
+        <p><strong>2024</strong></p>
+        <ul>
+            <li>
+                2024 臺北大學第二屆AI智慧應用創新競賽：優選（2024年5月）
+                <a class="link-text" href="https://new.ntpu.edu.tw/news/666164b407be4b0843d608a6/2024%E8%87%BA%E5%8C%97%E5%A4%A7%E5%AD%B8%E7%AC%AC%E4%BA%8C%E5%B1%86AI%E6%99%BA%E6%85%A7%E6%87%89%E7%94%A8%E5%89%B5%E6%96%B0%E7%AB%B6%E8%B3%BD%E5%BE%97%E7%8D%8E%E9%9A%8A%E4%BC%8D%E5%87%BA%E7%88%90%EF%BC%81" target="_blank"><u>連結</u></a>
+            </li>
+        </ul>
+        <p><strong>2023</strong></p>
+        <ul>
+            <li>
+                2023 臺北大學第一屆AI智慧應用創新競賽：第一名（2023年11月）
+                <a class="link-text" href="https://new.ntpu.edu.tw/news/655f040667ab2a0848316a66" target="_blank"><u>連結</u></a>
+            </li>
+            <li>
+                NTCIR-17 FinArg-1：財務分析中精細論點理解：最佳海報展示獎（2023年12月）
+                <a class="link-text" href="https://research.nii.ac.jp/ntcir/ntcir-17/awards.html#poster" target="_blank"><u>連結</u></a>
+            </li>
+            <li>
+                NTCIR-17 MedNLP-SC：社交媒體與臨床文本中的醫療自然語言處理：最佳海報展示獎（2023年12月）
+                <a class="link-text" href="https://research.nii.ac.jp/ntcir/ntcir-17/awards.html#poster" target="_blank"><u>連結</u></a>
+            </li>
+        </ul>
+        <p><strong>2022</strong></p>
+        <ul>
+            <li>
+                2022 全國運動產業創業擂台賽：第一名（2022年11月）
+            </li>
+        </ul>
+    </section> 
+</body>
+</html>

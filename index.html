@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chia-Tung Tsai's Website</title>
+    <style>
+        :root {
+            --main-color: #4a8cbb;
+            --panel-color-1: #f9f9f9;
+            --panel-color-2: #ececec;
+        }
+        body {
+            font-family: Calibri, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: var(--main-color);
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .tagline {
+            font-weight: lighter;
+            font-size: 1.2em;
+            color: #fff;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--main-color); /* 使用变量设置背景颜色 */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px; /* 设置圆角 */
+            text-decoration: none; /* 移除下划线 */
+            font-weight: bold; /* 文字加粗 */
+            transition: background-color 0.3s, color 0.3s; /* 过渡动画效果 */
+            margin-right: 15px; /* 右侧外边距 */
+        }
+
+        .button:hover {
+            background-color: #337ab7; /* 悬停时背景颜色变深 */
+        }
+
+        .contact-info a {
+            display: inline-block;
+            background-color: #1e4a72; 
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px; /* 圓角設定 */
+            text-decoration: none; /* 移除下劃線 */
+            font-weight: bold; /* 字體加粗 */
+            margin-right: 15px; /* 右側外邊距 */
+            transition: background-color 0.3s, color 0.3s; /* 過渡動畫效果 */
+        }
+
+        .contact-info a:hover {
+            background-color: white; /* 滑鼠懸停時的背景顏色變化 */
+            color: black;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            font-size: 1em;
+        }
+
+        nav a {
+            color: var(--main-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--main-color);
+            color: #ffffff;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: none;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--main-color);
+            padding-bottom: 5px;
+            font-weight: bold;
+            color: var(--main-color);
+        }
+
+        .accordion {
+            background-color: #f1f1f1;
+            color: #000;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: Calibri, sans-serif;
+        }
+
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+            margin-top: 5px;
+            border-left: 5px solid var(--main-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 16px; /* Consistent font-size */
+        }
+
+        .panel-1 {
+            background-color: var(--panel-color-1);
+        }
+
+        .panel-2 {
+            background-color: var(--panel-color-2);
+        }
+
+        .link-text {
+            color: #4a8cbb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link-text:hover {
+            text-decoration: underline;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--main-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 16px; 
+        }
+
+        #projects {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        #publications {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        #education {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .project-item, .publication-item, .edu-item, .publication-item {
+            position: relative;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item::before, .publication-item::before, .edu-item::before, .publication-item::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #3498db;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        #honors ul li {
+            margin-bottom: 10px;
+            font-size: 16px
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="profile-info">
+                <h1>Chia-Tung Tsai</h1>
+                <p class="tagline">Data Analyst | Expert in Python, SQL, and Tableau</p>
+                <div class="contact-info">
+                    <a href="mailto:cai.jiatong2601@gmail.com" class="button">Email</a>
+                    <a href="https://github.com/jiatongoo" target="_blank" class="button">GitHub</a>
+                    <a href="https://JiatongTsai.github.io/" target="_blank" class="button">Website</a>
+                </div>
+            </div>
+            <img src="D:\Personal-Website-main\image\profile.png" alt="蔡佳彤" class="profile-img">
+        </div>
+    </header>    
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#publications">Publications</a>
+        <a href="#honors">Honors</a>
+        <a href="https://JiatongTsai.github.io/Chinese" id="lang-toggle">Chinese</a>
+    </nav>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a recent graduate from the Master's program in Information Management at National Taipei University. I have expertise in Python for data processing and visualization, and I focus on using SQL and Tableau to enhance data-driven decision-making processes. During my studies, I worked as a research assistant, participating in multiple projects in the field of natural language processing. These experiences have given me a deep understanding of big data analytics and machine learning. I am passionate about applying my knowledge to practical data analysis tasks and providing valuable insights for businesses.</p>
+    </section>
+    <section id="experience">
+        <h2>Experience</h2>
+        <p><strong>Graduate Research Assistant, National Taipei University, 2022-2024. </strong>
+            <p>Supported data collection and preliminary analysis for multiple research projects in the field of natural language processing.</p></p>
+    </section>
+    <section id="education">
+        <h2>Education</h2>
+        <div class="edu-item">
+            <p><strong>Bachelor of Information Management:</strong> Shih Hsin University</p>
+            <p>Sep 2018 - June 2022</p>
+            <p>Coursework: [List Your Courses Here]</p>
+        </div>
+        <div class="edu-item">
+            <p><strong>Master of Information Management:</strong> National Taipei University</p>
+            <p>Sep 2022 - Jul 2024</p>
+            <p>Coursework: [List Your Courses Here]</p>
+            <p><strong>Lab:</strong> Intelligent Financial Innovation Technology Lab, Information Management, National Taipei University (iFit Lab MIS)</p>
+            <p><strong>Master Thesis:</strong> CMSI: Carbon Market Sentiment Index with AI Text Analytics</p>
+        </div>
+    </section>         
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <p><strong>Amazon Web Services Cloud Practitioner</strong>
+            <p>Issued Sep 2023</p></p>
+        <p><strong>Business Intelligence Planner</strong>
+            <p>Issued Jan 2022</p></p>
+    </section>    
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-item">
+            <p><strong>Metaverse Avatar Automatic Metadata Generation Module</strong></p>
+            <p>FormosaVerse</p>
+            <p>2022/12/01-2023/11/30</p>
+        </div>
+        <div class="project-item">
+            <p><strong>Fintech Green Finance for Carbon Market Index, Corporate Finance, and Environmental Policies</strong></p>
+            <p>Fintech and Green Finance Center (FGFC, NTPU)</p>
+            <p>2023/01/01-2024/12/31</p>
+        </div>
+        <div class="project-item">
+            <p><strong>Pilot Study on Universal Data Processing for Code Generation Engine</strong></p>
+            <p>Institute for Information Industry (III)</p>
+            <p>2023/08/01-2023/12/22</p>
+        </div>
+        <div class="project-item">
+            <p><strong>Generative AI-Driven ESG Report Generation Technology</strong></p>
+            <p>Industrial Technology Research Institute (ITRI)</p>
+            <p>2024/03/01-2024/12/31</p>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-list">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">Machine Learning</span>
+            <span class="skill-item">Data Visualization</span>
+            <span class="skill-item">ETL (Extract, Transform, Load)</span>
+            <span class="skill-item">Tableau</span>
+            <span class="skill-item">Power BI</span>
+        </div>
+    </section>    
+    <section id="publications">
+        <h2>Publications</h2>
+        <div class="publication-item">
+            <p><strong>Enhancing Multilingual ESG Impact Duration Classification with Transformer Language Models and Data Augmentation Strategies</strong></p>
+            <p><strong>Authors:</strong> Yu-Han Kao, Vidhya Nataraj, Hsiao-Chuan Liu, Wen-Hsuan Liao, <strong><u>Chia-Tung Tsai</u></strong>, and Min-Yuh Day (2024)</p>
+            <p><strong>Conference:</strong> The 35th International Conference on Information Management (ICIM 2024)</p>
+            <p><strong>Date & Location:</strong> 2024/06/23, Taipei, Taiwan</p>
+        </div>
+        <div class="publication-item">
+            <p><strong>IMNTPU at ML-ESG-3: Transformer Language Models for Multi-Lingual ESG Impact Type and Duration Classification</strong></p>
+            <p><strong>Authors:</strong> Yu Han Kao, Vidhya Nataraj, Ting-Chi Wang, Yu-Jyun Zheng, Hsiao-Chuan Liu, Wen-Hsuan Liao, <strong><u>Chia-Tung Tsai</u></strong>, and Min-Yuh Day (2024)</p>
+            <p><strong>Conference:</strong> Joint Workshop of the 7th Financial Technology and Natural Language Processing (FinNLP), the 5th Knowledge Discovery from Unstructured Data in Financial Services (KDF), and The 4th Workshop on Economics and Natural Language Processing (ECONLP), in Proceedings of The 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024)</p>
+            <p><strong>Date & Location:</strong> 2024/05/20-25, Italia, Torino</p>
+            <p><strong><a class="link-text" href="https://aclanthology.org/2024.finnlp-1.23/">View full text</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>IMNTPU at the NTCIR-17 FinArg-1: Financial Argument-Based Sentiment Analysis and Argumentative Relations Identification in Social Media</strong></p>
+            <p><strong>Authors:</strong> <strong><u>Chia-Tung Tsai</u></strong>, Wen-Hsuan Liao, Hsiao-Chuan Liu, Vidhya Nataraj, Tzu-Yu Liu, Mike Tian-Jian Jiang, and Min-Yuh Day (2023)</p>
+            <p><strong>Conference:</strong> <a class="link-text" href="https://research.nii.ac.jp/ntcir/ntcir-17/">Proceedings of the 17th NTCIR Conference on Evaluation of Information Access Technologies (NTCIR-17)</a></p>
+            <p><strong>Date & Location:</strong> 2023/12/12-15, Tokyo, Japan</p>
+            <p><strong><a class="link-text" href="https://cir.nii.ac.jp/crid/1390017345599669632">View full text</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>IMNTPU at the NTCIR-17 Real-MedNLP Task: Multi-Model Approach to Adverse Drug Event Detection from Social Media</strong></p>
+            <p><strong>Authors:</strong> Hsiao-Chuan Liu, Vidhya Nataraj, <strong><u>Chia-Tung Tsai</u></strong>, Wen-Hsuan Liao, Tzu-Yu Liu, Mike Tian-Jian Jiang, and Min-Yuh Day (2023)</p>
+            <p><strong>Conference:</strong> <a class="link-text" href="https://research.nii.ac.jp/ntcir/ntcir-17/">Proceedings of the 17th NTCIR Conference on Evaluation of Information Access Technologies (NTCIR-17)</a></p>
+            <p><strong>Date & Location:</strong> 2023/12/12-15, Tokyo, Japan</p>
+            <p><strong><a class="link-text" href="https://cir.nii.ac.jp/crid/1390861770529802624">View full text</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>A Pilot Study on AI-Assisted Code Generation with Large Language Models for Software Engineering</strong></p>
+            <p><strong>Authors:</strong> Hsiao-Chuan Liu, <strong><u>Chia-Tung Tsai</u></strong>, and Min-Yuh Day (2023)</p>
+            <p><strong>Conference:</strong> The 28th International Conference on Technologies and Applications of Artificial Intelligence (TAAI 2023)</p>
+            <p><strong>Date & Location:</strong> 2023/12/01-02, Yulin, Taiwan [Poster]</p>
+            <p><strong><a class="link-text" href="https://link.springer.com/chapter/10.1007/978-981-97-1711-8_12">View full text</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>CMSI: Carbon Market Sentiment Index with AI Text Analytics</strong></p>
+            <p><strong>Authors:</strong> Min-Yuh Day and <strong><u>Chia-Tung Tsai</u></strong></p>
+            <p><strong>Conference:</strong> <a class="link-text" href="https://asonam.cpsc.ucalgary.ca/2023/">The 14th International Workshop on Mining and Analyzing Social Networks for Decision Support (MSNDS 2023), in Proceedings of the 2023 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM 2023)</a></p>
+            <p><strong>Date & Location:</strong> 2023/11/06-09, Kusadasi, Turkey</p>
+            <p><strong><a class="link-text" href="https://dl.acm.org/doi/abs/10.1145/3625007.3627516">View full text</a></strong></p>
+        </div>
+        <div class="publication-item">
+            <p><strong>A Large Language Model Approach to Financial Argument-Based Sentiment Analysis in Research Reports and Earnings Conference Calls</strong></p>
+            <p><strong>Authors:</strong> <strong><u>Chia-Tung Tsai</u></strong> and Min-Yuh Day (2023)</p>
+            <p><strong>Conference:</strong> <a class="link-text" href="https://tanet2023.nccu.edu.tw/">NCS 2023</a></p>
+            <p><strong>Date & Location:</strong> 2023/11/01-03, Taipei, Taiwan</p>
+            <p><strong><a class="link-text" href="https://irtest.lib.nccu.edu.tw/handle/140.119/148752">View full text</a></strong></p>
+        </div>
+    </section>
+    <section id="honors">
+        <h2>Honors</h2>
+        <p><strong>2024</strong></p>
+        <ul>
+            <li>
+                Merit Award - 2nd AI Smart Application Innovation Competition, National Taipei University (May 2024): 
+                <a class="link-text" href="https://new.ntpu.edu.tw/news/666164b407be4b0843d608a6/2024%E8%87%BA%E5%8C%97%E5%A4%A7%E5%AD%B8%E7%AC%AC%E4%BA%8C%E5%B1%86AI%E6%99%BA%E6%85%A7%E6%87%89%E7%94%A8%E5%89%B5%E6%96%B0%E7%AB%B6%E8%B3%BD%E5%BE%97%E7%8D%8E%E9%9A%8A%E4%BC%8D%E5%87%BA%E7%88%90%EF%BC%81" target="_blank"><u>Site</u></a>
+            </li>
+        </ul>
+        <p><strong>2023</strong></p>
+        <ul>
+            <li>
+                First Place - 1st AI Smart Application Innovation Competition, National Taipei University (Nov 2023): 
+                <a class="link-text" href="https://new.ntpu.edu.tw/news/655f040667ab2a0848316a66" target="_blank"><u>Site</u></a>
+            </li>
+            <li>
+                Best Poster Presentation Award, NTCIR-17 FinArg-1: Fine-grained Argument Understanding in Financial Analysis (Dec 2023): 
+                <a class="link-text" href="https://research.nii.ac.jp/ntcir/ntcir-17/awards.html#poster" target="_blank"><u>Site</u></a>
+            </li>
+            <li>
+                Best Poster Presentation Award, NTCIR-17 MedNLP-SC: Medical Natural Language Processing for Social Media and Clinical Texts (Dec 2023): 
+                <a class="link-text" href="https://research.nii.ac.jp/ntcir/ntcir-17/awards.html#poster" target="_blank"><u>Site</u></a>
+            </li>
+        </ul>
+        <p><strong>2022</strong></p>
+        <ul>
+            <li>
+                First Place - National Sports Industry Entrepreneurship Contest (Nov 2022)
+            </li>
+        </ul>
+    </section> 
+</body>
+</html>
